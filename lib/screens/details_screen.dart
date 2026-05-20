@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../models/product.dart';
 import '../providers/app_state_provider.dart';
 import '../widgets/glass_card.dart';
+import 'lens_simulator_screen.dart';
 
 class DetailsScreen extends StatefulWidget {
   final Product product;
@@ -244,6 +245,87 @@ class _DetailsScreenState extends State<DetailsScreen> with SingleTickerProvider
                                 ),
                               ),
                             ],
+                          ),
+                        ),
+
+                        // Z87+ Optical Lens Calibrator trigger card
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => LensSimulatorScreen(product: widget.product),
+                                ),
+                              );
+                            },
+                            child: Container(
+                              padding: const EdgeInsets.all(16),
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  colors: [
+                                    const Color(0xFFFF9E00).withOpacity(0.12),
+                                    Colors.white.withOpacity(0.02),
+                                  ],
+                                ),
+                                borderRadius: BorderRadius.circular(20),
+                                border: Border.all(
+                                  color: const Color(0xFFFF9E00).withOpacity(0.35),
+                                  width: 1.2,
+                                ),
+                              ),
+                              child: Row(
+                                children: [
+                                  Container(
+                                    padding: const EdgeInsets.all(10),
+                                    decoration: BoxDecoration(
+                                      color: const Color(0xFFFF9E00).withOpacity(0.15),
+                                      shape: BoxShape.circle,
+                                    ),
+                                    child: const Icon(
+                                      Icons.lens_blur_rounded,
+                                      color: Color(0xFFFF9E00),
+                                      size: 22,
+                                    ),
+                                  ),
+                                  const SizedBox(width: 16),
+                                  Expanded(
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'TEST OPTICAL LENS SIMULATOR',
+                                          style: GoogleFonts.orbitron(
+                                            textStyle: const TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 10,
+                                              fontWeight: FontWeight.w900,
+                                              letterSpacing: 0.8,
+                                            ),
+                                          ),
+                                        ),
+                                        const SizedBox(height: 4),
+                                        Text(
+                                          'Calibrate this lens in real-time worksite hazards like welding sparks, solar glares, and concrete dust.',
+                                          style: TextStyle(
+                                            color: Colors.white.withOpacity(0.55),
+                                            fontSize: 11,
+                                            height: 1.35,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  const SizedBox(width: 8),
+                                  const Icon(
+                                    Icons.arrow_forward_ios_rounded,
+                                    color: Color(0xFFFF9E00),
+                                    size: 16,
+                                  ),
+                                ],
+                              ),
+                            ),
                           ),
                         ),
 
